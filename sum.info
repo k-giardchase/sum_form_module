@@ -1,0 +1,5 @@
+name = Sum
+description = This will take a form submission
+package = Epicodus Examples
+core = 7.x
+files[] = sum.module
