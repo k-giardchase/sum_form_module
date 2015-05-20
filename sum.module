@@ -8,6 +8,12 @@ function sum_menu() {
         'access callback' => TRUE,
         'type' => MENU_NORMAL_ITEM,
     );
+    $items['success'] = array(
+        'title' => 'Success',
+        'page callback' => 'sum_success',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+    );
     return $items;
 }
 
@@ -17,18 +23,23 @@ function sum_form() {
         '#type' => 'textfield',
         '#description' => t('Please enter your starting number.'),
     );
-
     $form['right_number'] = array(
         '#title' => 'Right number',
         '#type' => 'textfield',
         '#description' => t('Please enter a number to add to the starting number.'),
     );
-
     $form['submit'] = array(
         '#type' => 'submit',
-        '#value' => 'Calculate sum',
+        '#value' => 'Calculate Sum',
     );
 
     return $form;
+}
 
+function sum_form_submit($form, &$form_state) {
+    $form_state['redirect'] = 'success';
+}
+
+function sum_success() {
+    return 'You calculated a sum!';
 }
